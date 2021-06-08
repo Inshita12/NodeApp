@@ -14,15 +14,15 @@ function requestHandler(request, response) {
 
   switch(request.url){
       case'/':
-        filePath:'./index.html'
+        filePath='./index.html'
         break;
       case'/profile':
-        filePath:'./profile.html'  
+        filePath='./profile.html'  
         break;
       default:
-          filePath:'./404.html'  
+          filePath='./404.html'  
   }
-  fs.readFile =
+  fs.readFile  
     (filePath,
     function (error, data) {
       if (error) {
