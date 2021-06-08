@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Music Player</title>
+ 
+  <script src="https://kit.fontawesome.com/2d9b67a497.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- This music player is just a template as so many pictures are not added yet in sections -->
+
+  <!-- This is internal CSS is used to create nav tab -->
+  <style>
+  * {box-sizing: border-box;}
+
+  .topnav {
+    overflow: hidden;
+    background-color:white;
+  }
+
+  .topnav a {
+    float: left;
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+/* This is for hover when clicking on my music ,download it'll be little dim */
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  .topnav a.active {
+    background-color: #2196F3;
+    color: white;
+  }
+
+  .topnav .search-container {
+    float: right;
+  }
+/* This is for writing text in search bar */
+  .topnav input[type=text] {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: none;
+  }
+  /* Search Button */
+  .topnav .search-container button {
+    float: right;
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+  }
+/* Hover on search button */
+  .topnav .search-container button:hover {
+    background: #ccc;
+  }
+/*  to make it responsive */
+  @media screen and (max-width: 600px) {
+    .topnav .search-container {
+      float: none;
+    }
+    .topnav a, .topnav input[type=text], .topnav .search-container button {
+      float: none;
+      display: block;
+      text-align: left;
+      width: 100%;
+      margin: 0;
+      padding: 14px;
+    }
+    .topnav input[type=text] {
+      border: 1px solid #ccc;
+    }
+  }
+  body{
+background: linear-gradient(90deg, rgba(34,29,126,1) 0%, rgba(58,83,198,1) 30%, rgba(34,102,176,1) 57%, rgba(0,160,228,1) 89%, rgba(143,221,237,1) 100%);
+}
+/* For artist section */
+.row{
+  padding-left:120px;
+}
+.column2 {
+  float: left;
+  width: 250px;;
+
+}
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+#span1{
+position: relative;
+/* Adjust these values accordingly */
+top: 1px;
+right: 218px;
+}
+#span2{
+position:relative;
+right:20px;
+}
+#span3{
+position:relative;
+left: 50px;
+top:-10px;
+}
+form{
+position: relative;
+right:200px;
+}
+
+#punjabi{
+width:420px;
+height:260px;
+position: relative;
+right:100px;
+}
+#punjabi:hover{
+transform: scale(1.5);
+}
+#mashup{
+width:65%;
+height:65%;
+position:relative;
+right:10px;
+}
+#mashup:hover{
+transform: scale(1.5);
+}
+#hits{
+width:400px;
+height:260px;
+position: relative;
+right:50px;
+
+}
+#hits:hover{
+transform: scale(1.5);
+}
+h2{
+padding-left:130px;
+color:white;
+}
+#diljit{
+width:200px;
+height:200px;
+margin-left:15px;
+border-radius: 25%;
+border: 3px solid white;
+
+}
+.whole{
+	display: inline-block;
+	overflow: hidden;
+	width: 100%;
+	height: 88vh;
+	overflow: scroll;
+}
+/*bpraak*/
+/* for setting the size of image */
+.containerbpraak {
+position: relative;
+width:200px;
+height:200px;
+}
+
+.imagebpraak {
+width:200px;
+height:200px;
+border-radius: 25%;
+border: 3px solid white;
+transition: .5s ease;
+backface-visibility: hidden;
+}
+/* For adjustment of hover */
+.middlebpraak {
+transition: .5s ease;
+opacity: 0;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+-ms-transform: translate(-50%, -50%);
+text-align: center;
+}
+
+.containerbpraak:hover .imagebpraak {
+opacity: 0.3;
+}
+
+.containerbpraak:hover .middlebpraak {
+opacity: 1;
+}
+/* For adjusting text while hover */
+.text1bpraak {
+font-family: 'Comic Sans MS';
+color: white;
+font-size: 20px;
+}
+/* for setting the size of image */
+.containerneha {
+position: relative;
+width:200px;
+height:200px;
+}
+
+.imageneha {
+width:200px;
+height:200px;
+border-radius: 25%;
+border: 3px solid white;
+transition: .5s ease;
+backface-visibility: hidden;
+}
+/* For adjustment of hover */
+.middleneha {
+transition: .5s ease;
+opacity: 0;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+-ms-transform: translate(-50%, -50%);
+text-align: center;
+}
+/* For adjusting text while hover */
+
+.containerneha:hover .imageneha {
+opacity: 0.3;
+}
+
+.containerneha:hover .middleneha {
+opacity: 1;
+}
+
+.text1neha {
+font-family: 'Comic Sans MS';
+color: white;
+font-size: 20px;
+}
+/* /same for this section as mentioned above for manak/ */
+.containermanak {
+position: relative;
+width:200px;
+height:200px;
+}
+
+.imagemanak {
+width:200px;
+height:200px;
+border-radius: 25%;
+border: 3px solid white;
+transition: .5s ease;
+backface-visibility: hidden;
+}
+
+.middlemanak {
+transition: .5s ease;
+opacity: 0;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+-ms-transform: translate(-50%, -50%);
+text-align: center;
+}
+
+.containermanak:hover .imagemanak {
+opacity: 0.3;
+}
+
+.containermanak:hover .middlemanak {
+opacity: 1;
+}
+
+.text1manak {
+font-family: 'Comic Sans MS';
+color: white;
+font-size: 20px;
+}
+/*garry*/
+.containergarry {
+position: relative;
+width:200px;
+height:200px;
+}
+
+.imagegarry {
+width:200px;
+height:200px;
+border-radius: 25%;
+border: 3px solid white;
+transition: .5s ease;
+backface-visibility: hidden;
+}
+
+.middlegarry {
+transition: .5s ease;
+opacity: 0;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+-ms-transform: translate(-50%, -50%);
+text-align: center;
+}
+
+.containergarry:hover .imagegarry {
+opacity: 0.3;
+}
+
+.containergarry:hover .middlegarry {
+opacity: 1;
+}
+
+.text1garry {
+font-family: 'Comic Sans MS';
+color: white;
+font-size: 20px;
+}
+/*hardy*/
+.containerhardy {
+position: relative;
+width:200px;
+height:200px;
+}
+
+.imagehardy {
+width:200px;
+height:200px;
+border-radius: 25%;
+border: 3px solid white;
+transition: .5s ease;
+backface-visibility: hidden;
+}
+
+.middlehardy {
+transition: .5s ease;
+opacity: 0;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+-ms-transform: translate(-50%, -50%);
+text-align: center;
+}
+
+.containerhardy:hover .imagehardy {
+opacity: 0.3;
+}
+
+.containerhardy:hover .middlehardy {
+opacity: 1;
+}
+
+.text1hardy {
+font-family: 'Comic Sans MS';
+color: white;
+font-size: 20px;
+}
+/*char end*/
+/* for adjusting the height,width of sections */
+#album{
+width:150px;
+height:150px;
+margin-left:40px;
+border-radius: 50%;
+border: 3px solid black;
+}
+#love{
+width:150px;
+height:150px;
+border-radius: 50%;
+border: 3px solid black;
+}
+#retro{
+width:150px;
+height:150px;
+border-radius: 50%;
+border: 3px solid black;
+}
+#album1{
+width:150px;
+height:150px;
+margin-left:40px;
+border-radius: 15%;
+border: 3px solid black;
+}
+#love1{
+width:150px;
+height:150px;
+border-radius: 15%;
+border: 3px solid black;
+}
+#retro1{
+width:150px;
+height:150px;
+border-radius: 15%;
+border: 3px solid black;
+}
+#album2{
+width:150px;
+height:150px;
+margin-left:40px;
+border: 3px solid black;
+}
+#love2{
+width:150px;
+height:150px;
+border: 3px solid black;
+}
+#retro2{
+width:150px;
+height:150px;
+border: 3px solid black;
+}
+#album3{
+width:150px;
+height:150px;
+margin-left:40px;
+border-radius: 15%;
+border: 3px solid black;
+}
+#love3{
+width:150px;
+height:150px;
+
+border-radius: 15%;
+border: 3px solid black;
+}
+#retro3{
+width:150px;
+height:150px;
+border-radius: 15%;
+border: 3px solid black;
+}
+#album4{
+width:150px;
+height:150px;
+margin-left:40px;
+border-radius: 15%;
+border: 3px solid black;
+}
+#love4{
+width:150px;
+height:150px;
+border-radius: 15%;
+border: 3px solid black;
+}
+#retro4{
+width:150px;
+height:150px;
+border-radius: 15%;
+border: 3px solid black;
+}
+#album5{
+width:150px;
+height:150px;
+margin-left:40px;
+border-radius: 15%;
+border: 3px solid black;
+}
+#love5{
+width:150px;
+height:150px;
+border-radius: 15%;
+border: 3px solid black;
+}
+#retro5{
+width:150px;
+height:150px;
+border-radius: 15%;
+border: 3px solid black;
+}
+#album6{
+width:150px;
+height:150px;
+margin-left:40px;
+border-radius: 15%;
+border: 3px solid black;
+}
+#love6{
+width:150px;
+height:150px;
+border-radius: 15%;
+border: 3px solid black;
+}
+#retro6{
+width:150px;
+height:150px;
+border-radius: 15%;
+border: 3px solid black;
+}
+footer {
+	position: absolute;
+	bottom: 1px;
+	width: 100%;
+	height: 60px;
+	background-color: #282828;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-content: center;
+	flex-wrap: nowrap;
+	padding: 0px 3%;
+	box-sizing: border-box;
+	z-index: 6;
+}
+/* footer is divided into 3 parts */
+/* 1. first part of the footer */
+.active-song-description {
+	/* border:1px solid white; */
+	height: 90%;
+	width: 25%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+}
+/* the current song which is being played, this is the image container for that. */
+#song-image {
+	width: 50px;
+	height: 50px;
+	min-width: 50px;
+	min-height: 50px;
+}
+/* current song image */
+#song-image img {
+	width: 100%;
+	height: 100%;
+}
+/* heart and ban icon */
+.heart-and-ban-icon {
+	height: 100%;
+	padding-top: 4%;
+}
+/* song decscription */
+.song-desc {
+	margin-right: 1%;
+	margin-left: 1%;
+}
+/* song name */
+.song-desc div:nth-child(1) {
+	font-size: 14px;
+}
+/* song author */
+.song-desc div:nth-child(2) {
+	font-size: 12px;
+}
+
+/* 2. Second part of the footer*/
+.player {
+	width: 45%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: nowrap;
+}
+/* controls is the container for all the center controls of the player */
+.controls {
+	width: 40%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 20px;
+}
+/* this is the song-duration slider */
+#slider {
+	width: 100%;
+	font-size: 12px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: center;
+	margin-top: 5px;
+}
+/* ////////// */
+.time {
+	margin: 0px 10px;
+}
+
+/* adjusting the slider for better visuals */
+.slidecontainer {
+	width: 100%;
+}
+
+/* for audio and main center player */
+.slider {
+	-webkit-appearance: none;
+	width: 100%;
+	height: 5px;
+	background: #d3d3d3;
+	outline: none;
+	opacity: 0.5;
+	-webkit-transition: 0.2s;
+	transition: opacity 0.2s;
+}
+
+/* hover effect for the slider */
+.slider:hover {
+	opacity: 1;
+}
+
+/* these are for adjusting the dimensions and default styling of the long-slider */
+.slider::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 17px;
+	height: 17px;
+	border-radius: 50%;
+	background: #007bff;
+	cursor: pointer;
+}
+
+/* this is the circular thumb, which can be moved across the div */
+.slider::-moz-range-thumb {
+	width: 25px;
+	height: 25px;
+	background: #4caf50;
+	cursor: pointer;
+}
+
+/* third part of the footer */
+/* this contains the extra icons and slider for volume */
+/* this is also a container */
+.extras {
+	width: 20%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+}
+
+</style>
+</head>
+<!-- Top nav section -->
+<body style="background-color:black;">
+
+  <div class="topnav">
+    <a class="active" href="#home">Home</a>
+    <a href="#My Music">My Music</a>
+    <a href="#Downloads">Downloads</a>
+    <div class="search-container">
+      <form action="/action_page.php">
+        <input type="text" placeholder="Search.." name="search">
+        <button type="submit"><i class="fa fa-search"></i></button>
+      </form>
+    </div>
+  </div>
+<!-- THis is the internal CSS for slideshow -->
+  <style>
+  body {font-family: Verdana, sans-serif; margin:0}
+  .mySlides {display: none}
+  img {vertical-align: middle;}
+
+  /* Slideshow container */
+  .slideshow-container {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+  }
+
+  /* Next & previous buttons */
+  .prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+  }
+
+  /* Position the "next button" to the right */
+  .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+
+  /* On hover, add a black background color with a little bit see-through */
+  .prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+  }
+
+  /* Caption text */
+  .text {
+    color: #f2f2f2;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Number text (1/3 etc) */
+  .numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+  }
+
+  /* The dots/bullets/indicators */
+  .dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+  }
+
+  .active, .dot:hover {
+    background-color: #717171;
+  }
+
+  /* Fading animation */
+  .fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+  }
+/* Responsive */
+  @-webkit-keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+  }
+
+  @keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+  }
+  @media only screen and (max-width: 300px) {
+    .prev, .next,.text {font-size: 11px}
+  }
+  </style>
+<!-- For pictures -->
+  <div class="whole">
+    <div class="slideshow-container">
+
+      <div class="mySlides fade">
+        <div class="numbertext">1 / 3</div>
+        <img src="Animation Picture (1).jpg" style="width:100%">
+        <div class="text">Love Songs</div>
+      </div>
+
+      <div class="mySlides fade">
+        <div class="numbertext">2 / 3</div>
+        <img src="Animation Picture (2).jpg" style="width:100%">
+        <div class="text">Emotional</div>
+      </div>
+
+      <div class="mySlides fade">
+        <div class="numbertext">3 / 3</div>
+        <img src="Animation Picture (3).jpg" style="width:100%">
+        <div class="text">English songs</div>
+      </div>
+<!-- Previous and next buttons -->
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+    </div>
+    <br>
+
+    <div style="text-align:center">
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+      <span class="dot" onclick="currentSlide(3)"></span>
+    </div>
+
+    <script>
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+      var i;
+      var slides = document.getElementsByClassName("mySlides");
+      var dots = document.getElementsByClassName("dot");
+      if (n > slides.length) {slideIndex = 1}
+      if (n < 1) {slideIndex = slides.length}
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex-1].style.display = "block";
+      dots[slideIndex-1].className += " active";
+    }
+    </script>
+    <br>
+    <center>Click on Hardy Sandhu's image to navigate on next page.</center>
+    <h2>Popular Artist</h2>
+    <!-- For artists photos -->
+    <!-- to use div tag in a single row -->
+    <div class="row">
+      <div class="column2">
+      <div class="containerhardy">
+        <a href="Hardy.html">
+          <img src="hardy.jpg" class="imagehardy">
+          <div class="middlehardy">
+            <div class="text1hardy">Hardy Sandhu</div>
+          </div>
+        </div>
+        </a>
+      </div>
+      <div class="column2">
+      <div class="containerbpraak">
+        <img src="bpraak.jpg" class="imagebpraak">
+        <div class="middlebpraak">
+          <div class="text1bpraak">B Praak</div>
+        </div>
+      </div>
+    </div>
+   <div class="column2">
+      <div class="containerneha">
+        <img src="neha.jpg" class="imageneha">
+        <div class="middleneha">
+          <div class="text1neha">Neha Kakkar</div>
+        </div>
+      </div>
+    </div>
+     <div class="column2">
+      <div class="containermanak">
+        <img src="manak.jpg" class="imagemanak">
+        <div class="middlemanak">
+          <div class="text1manak">Jass Manak</div>
+        </div>
+      </div>
+    </div>
+       <div class="column2">
+
+      <div class="containergarry">
+        <img src="garry.jpg" class="imagegarry">
+        <div class="middlegarry">
+          <div class="text1garry">Garry Sandhu</div>
+        </div>
+      </div>
+    </div>
+</div>
+    <br><br>
+    <h2>TYPES</h2>
+    <center>
+<!-- For station section -->
+<!-- and others sections are same as well -->
+      <div class="station">
+
+        <img src="album.jpg" hspace="30" id="album" >
+        <img src="rom.jpg" hspace="30" id="love">
+        <img src="retro.jpg" hspace="30" id="retro">
+        <img src="retro.jpg" hspace="30" id="retro">
+        <img src="retro.jpg" hspace="30" id="retro">
+        <img src="retro.jpg" hspace="30" id="retro">
+
+      </div>
+    </center>
+    <br>
+    <br>
+    <h2>LATEST ENGLISH</h2>
+    <center>
+      <div class="Latest">
+
+        <img src="album.jpg" hspace="30" id="album1" >
+        <img src="rom.jpg" hspace="30" id="love1">
+        <img src="retro.jpg" hspace="30" id="retro1">
+        <img src="retro.jpg" hspace="30" id="retro1">
+        <img src="retro.jpg" hspace="30" id="retro1">
+        <img src="retro.jpg" hspace="30" id="retro1">
+
+      </div>
+    </center>
+    <br>
+    <br>
+    <h2>LATEST HINDI</h2>
+    <center>
+      <div class="Latest">
+
+        <img src="album.jpg" hspace="30" id="album2" >
+        <img src="rom.jpg" hspace="30" id="love2">
+        <img src="retro.jpg" hspace="30" id="retro2">
+        <img src="retro.jpg" hspace="30" id="retro2">
+        <img src="retro.jpg" hspace="30" id="retro2">
+        <img src="retro.jpg" hspace="30" id="retro2">
+
+      </div>
+    </center>
+    <br>
+    <br>
+    <h2>LATEST PUNJABI</h2>
+    <center>
+      <div class="Latest">
+
+        <img src="album.jpg" hspace="30" id="album3" >
+        <img src="rom.jpg" hspace="30" id="love3">
+        <img src="retro.jpg" hspace="30" id="retro3">
+        <img src="retro.jpg" hspace="30" id="retro3">
+        <img src="retro.jpg" hspace="30" id="retro3">
+        <img src="retro.jpg" hspace="30" id="retro3">
+
+      </div>
+    </center>
+    <br>
+    <br>
+    <h2>TOP 10 HITS</h2>
+    <center>
+      <div class="Latest">
+
+        <img src="album.jpg" hspace="30" id="album4" >
+        <img src="rom.jpg" hspace="30" id="love4">
+        <img src="retro.jpg" hspace="30" id="retro4">
+        <img src="retro.jpg" hspace="30" id="retro4">
+        <img src="retro.jpg" hspace="30" id="retro4">
+        <img src="retro.jpg" hspace="30" id="retro4">
+
+      </div>
+    </center>
+    <br>
+    <br>
+    <h2>TOP SEARCHED</h2>
+    <center>
+      <div class="Latest">
+
+        <img src="album.jpg" hspace="30" id="album5" >
+        <img src="rom.jpg" hspace="30" id="love5">
+        <img src="retro.jpg" hspace="30" id="retro5">
+        <img src="retro.jpg" hspace="30" id="retro5">
+        <img src="retro.jpg" hspace="30" id="retro5">
+        <img src="retro.jpg" hspace="30" id="retro5">
+
+      </div>
+    </center>
+    <br>
+    <br>
+    <h2>ALL TIME FAVOURITE</h2>
+    <center>
+      <div class="Latest">
+
+        <img src="album.jpg" hspace="30" id="album6" >
+        <img src="rom.jpg" hspace="30" id="love6">
+        <img src="retro.jpg" hspace="30" id="retro6">
+        <img src="retro.jpg" hspace="30" id="retro6">
+        <img src="retro.jpg" hspace="30" id="retro6">
+        <img src="retro.jpg" hspace="30" id="retro6">
+
+      </div>
+    </center>
+  </div>
+  <br><br><br>
+  <footer>
+    <div class="active-song-description">
+      <!-- song image -->
+      <div id="song-image">
+        <img src="nah.jpg">
+      </div>
+      <!-- song name and author -->
+      <div class="song-desc">
+        <div>
+          Naah by Hardy Sandhu
+        </div>
+        <div>
+        Hardy Sandhu
+        </div>
+      </div>
+      <!-- heart icon and ban icon -->
+      <div class="heart-and-ban-icon">
+        <span>
+          <i class="far fa-heart"></i>
+        </span>
+        <span>
+          <i class="fas fa-ban"></i>
+        </span>
+      </div>
+    </div>
+    <!-- these are the main player controls -->
+    <div class="player">
+      <div class="controls">
+        <div><i class="fas fa-random"></i></div>
+        <div><i class="fas fa-step-backward"></i></div>
+        <div><i class="fas fa-pause-circle"></i></div>
+        <div><i class="fas fa-step-forward"></i></div>
+        <div><i class="fas fa-redo"></i></div>
+      </div>
+      <!-- this is the slider -->
+      <div id="slider">
+        <!-- current time -->
+        <div class="time">
+          1:39
+        </div>
+        <div class="slidecontainer">
+          <input type="range" min="0" max="100" value="0" class="slider" id="myRange">
+        </div>
+        <!-- total time -->
+        <div class="time">
+          4:44
+        </div>
+      </div>
+    </div>
+    <!-- other icons including the volume slider and all -->
+    <div class="extras">
+      <div>
+        <i class="fas fa-list-ul"></i>
+      </div>
+      <div>
+        <i class="fas fa-laptop"></i>
+      </div>
+      <div>
+        <i class="fas fa-volume-up"></i>
+      </div>
+      <div class="slidecontainer" style="width:30%;">
+        <input type="range" min="0" max="100" value="0" class="slider" id="myRange" style="margin-top:0px;">
+      </div>
+      <div>
+        <i class="fas fa-expand-alt"></i>
+      </div>
+    </div>
+  </footer>
+  </html>
